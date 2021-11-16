@@ -32,10 +32,10 @@ router.route('/')
 router.route('/:id')
     .get(async (req,res,next) => {
         try {
-            const todos = await Todo.findAll({
+            const todos = await User.findOne({
               include: {
-                model: User,
-                where: { id: req.params.id },
+                model: Todo,
+                where: { member: req.params.id},
               },
             });
             console.log(todos);
