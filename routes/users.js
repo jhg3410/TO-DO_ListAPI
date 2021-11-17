@@ -33,6 +33,7 @@ router.route('/:id')
     .get(async (req,res,next) => {
         try {
             const todos = await User.findOne({
+              where: {id :req.params.id},
               include: {
                 model: Todo,
                 where: { member: req.params.id},
